@@ -83,6 +83,7 @@ $produits = $pdo->query("SELECT * FROM produits ORDER BY id DESC")->fetchAll(PDO
       <div class="card-header">Catalogue</div>
     </div>
 
+    
     <div class="container mt-5">
         <h2>Liste des produits</h2>
         <div class="input-group mb-3">
@@ -99,22 +100,6 @@ $produits = $pdo->query("SELECT * FROM produits ORDER BY id DESC")->fetchAll(PDO
                             <div class="d-flex align-items-center mb-3">
                                 <?php 
                                 $icon = 'bi-box';
-                                switch (strtolower($produit['composant'])) {
-                                    case 'cpu':
-                                        $icon = 'bi-cpu';
-                                        break;
-                                    case 'gpu':
-                                        $icon = 'bi-gpu-card';
-                                        break;
-                                    case 'ram':
-                                        $icon = 'bi-memory';
-                                        break;
-                                    case 'stockage':
-                                        $icon = 'bi-hdd';
-                                        break;
-                                    default:
-                                        $icon = 'bi-box';
-                                }
                                 ?>
                                 <i class="bi <?= $icon; ?> fs-3 me-2"></i>
                                 <h5 class="card-title mb-0">Marque: <?= htmlspecialchars($produit['marque']); ?></h5>
