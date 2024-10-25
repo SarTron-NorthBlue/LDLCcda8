@@ -53,22 +53,22 @@ $produits = $pdo->query("SELECT * FROM produits ORDER BY id DESC")->fetchAll(PDO
     <ul class="navbar-nav d-flex flex-row">
       <!-- Icons -->
       <li class="nav-item me-3 me-lg-0">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="accuil.php">
         <i class="bi bi-pc-display fs-3"></i>
         </a>
       </li>
       <li class="nav-item me-3 me-lg-0">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="suppression.php">
         <i class="bi bi-trash3 fs-3"></i>
         </a>
       </li>
       <li class="nav-item me-3 me-lg-0">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="ajouter_produit.php">
         <i class="bi bi-upload fs-3"></i>
         </a>
       </li>
       <li class="nav-item me-3 me-lg-0">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="modification.php">
         <i class="bi bi-pen fs-3"></i>
         </a>
       </li>
