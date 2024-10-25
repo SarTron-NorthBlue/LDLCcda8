@@ -65,7 +65,9 @@ $produits = $pdo->query("SELECT * FROM produits ORDER BY id DESC")->fetchAll(PDO
         }
     </style>
 </header>
-
+<div class="card text-center">
+      <div class="card-header">Supression</div>
+    </div>
 
 <div class="container mt-5">
     <h2>Liste des produits</h2>
