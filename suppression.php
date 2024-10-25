@@ -144,13 +144,12 @@ $produits = $pdo->query("SELECT * FROM produits ORDER BY id DESC")->fetchAll(PDO
                 $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
             });
         });
-
-        // Ouvrir le modal avec l'ID du produit sélectionné
+        
         $('#deleteModal').on('show.bs.modal', function (event) {
-            var button = $(event.relatedTarget); // Bouton qui a déclenché le modal
-            var productId = button.data('id'); // Récupérer l'ID du produit
+            var button = $(event.relatedTarget);
+            var productId = button.data('id'); 
             var modal = $(this);
-            modal.find('#delete_id').val(productId); // Insérer l'ID dans le formulaire caché
+            modal.find('#delete_id').val(productId); 
         });
     });
 </script>
