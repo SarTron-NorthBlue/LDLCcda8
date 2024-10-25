@@ -43,9 +43,40 @@ $produits = $pdo->query("SELECT * FROM produits ORDER BY id DESC")->fetchAll(PDO
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     </head>
 
     <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+  <div class="container-fluid justify-content-center">
+    <ul class="navbar-nav d-flex flex-row">
+      <!-- Icons -->
+      <li class="nav-item me-3 me-lg-0">
+        <a class="nav-link" href="#">
+        <i class="bi bi-pc-display fs-3"></i>
+        </a>
+      </li>
+      <li class="nav-item me-3 me-lg-0">
+        <a class="nav-link" href="#">
+        <i class="bi bi-trash3 fs-3"></i>
+        </a>
+      </li>
+      <li class="nav-item me-3 me-lg-0">
+        <a class="nav-link" href="#">
+        <i class="bi bi-upload fs-3"></i>
+        </a>
+      </li>
+      <li class="nav-item me-3 me-lg-0">
+        <a class="nav-link" href="#">
+        <i class="bi bi-pen fs-3"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
         <header>
             <h1 class="titre1">Bienvenue sur LDLC fait maison</h1>
         </header>
@@ -107,10 +138,12 @@ $produits = $pdo->query("SELECT * FROM produits ORDER BY id DESC")->fetchAll(PDO
 
         <div class="container mt-5">
             <h2>Liste des produits ajoutés</h2>
-            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-  <span class="input-group-text border-0" id="search-addon">
-    <i class="fas fa-search"></i>
-  </span>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" id="search" placeholder="Recherche par référence" aria-label="Search" aria-describedby="search-addon" />
+                <span class="input-group-text">
+                    <i class="bi bi-search"></i>
+                </span>
+            </div>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -123,7 +156,7 @@ $produits = $pdo->query("SELECT * FROM produits ORDER BY id DESC")->fetchAll(PDO
                         <th>Quantité</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="produitTable">
                     <?php foreach ($produits as $produit): ?>
                     <tr>
                         <td><?= htmlspecialchars($produit['id']); ?></td>
@@ -141,5 +174,16 @@ $produits = $pdo->query("SELECT * FROM produits ORDER BY id DESC")->fetchAll(PDO
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#search').on('keyup', function() {
+                    var value = $(this).val().toLowerCase();
+                    $('#produitTable tr').filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
+        </script>
     </body>
 </html>
